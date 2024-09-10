@@ -12,10 +12,10 @@ from forms.contact import contact_form
 
 text = {
     "en": {
-        "title": "Batted Ball Distribution Visualization",
+        "title": "Batted Ball Distribution Visualization LMB",
         "description": """
-        This app is designed to visualize batted ball distribution for a selected player. 
-        Users can explore various outcomes such as singles, doubles, triples, home runs, and outs. 
+        This app is designed to visualize the batted ball distribution for a selected player from the Liga Mexicana de Beisbol. 
+        \nUsers can explore various outcomes such as singles, doubles, triples, home runs, and outs. 
         It also allows filtering based on platoon splits and specific time frames, providing deeper insights into player performance.
         """,
         "disclaimer": """
@@ -31,10 +31,10 @@ text = {
         # "email_me": "📧 [Email me](mailto:your_email@example.com)",        
     },
     "es": {
-        "title": "Distribución de Pelota Bateada",
+        "title": "Distribución de Pelota Bateada LMB",
         "description": """
-        Esta aplicación está diseñada para visualizar la distribución de bateo de un jugador. 
-        Los usuarios pueden escoger entre diferentes resultados, como sencillos, dobles, triples, jonrones y outs. 
+        Esta aplicación está diseñada para visualizar la distribución de bateo de un jugador de la Liga Mexicana de Beisbol. 
+        \nLos usuarios pueden escoger entre diferentes resultados, como sencillos, dobles, triples, jonrones y outs. 
         También permite filtrar por divididas de perfil del lanzador y periodos de tiempo específicos, proporcionando una visión más profunda del rendimiento del jugador.
         """,
         "disclaimer": """
@@ -65,7 +65,7 @@ with col1:
 
 # Desctiption and disclaimer
 st.write(text[lang_code]["description"])
-#st.write("\n")
+st.write("\n")
 st.write(text[lang_code]["disclaimer"])
 
 # Event to color mapping
