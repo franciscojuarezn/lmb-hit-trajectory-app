@@ -4,11 +4,6 @@ import requests
 
 WEBHOOK_URL = st.secrets["WEBHOOK_URL"]
 
-if WEBHOOK_URL:
-    st.write(f"Webhook URL: {WEBHOOK_URL}")  # For debugging purposes
-else:
-    st.error("Webhook URL is missing. Check your secrets configuration.")
-
 contact_info = {
     "en": {
         "title": "Contact Me",

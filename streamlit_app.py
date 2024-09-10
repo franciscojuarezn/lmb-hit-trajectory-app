@@ -65,6 +65,7 @@ with col1:
 
 # Desctiption and disclaimer
 st.write(text[lang_code]["description"])
+#st.write("\n")
 st.write(text[lang_code]["disclaimer"])
 
 # Event to color mapping
