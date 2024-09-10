@@ -16,7 +16,7 @@ text = {
         "description": """
         This app is designed to visualize the batted ball distribution for a selected player from the Liga Mexicana de Beisbol. 
         \nUsers can explore various outcomes such as singles, doubles, triples, home runs, and outs. 
-        It also allows filtering based on platoon splits and specific time frames, providing deeper insights into player performance.
+        It also allows filtering based on batter splits and specific time frames, providing deeper insights into player performance.
         """,
         "disclaimer": """
         **Disclaimer:** The data source is MLB Gameday, which may not be perfectly accurate. However, it closely matches the data provided by Trackman.
@@ -34,8 +34,8 @@ text = {
         "title": "Distribución de Pelota Bateada LMB",
         "description": """
         Esta aplicación está diseñada para visualizar la distribución de bateo de un jugador de la Liga Mexicana de Beisbol. 
-        \nLos usuarios pueden escoger entre diferentes resultados, como sencillos, dobles, triples, jonrones y outs. 
-        También permite filtrar por divididas de perfil del lanzador y periodos de tiempo específicos, proporcionando una visión más profunda del rendimiento del jugador.
+        \nLos usuarios pueden escoger entre diferentes resultados como sencillos, dobles, triples, jonrones y outs. 
+        También permite filtrar por divididas del perfil y periodos de tiempo específicos, proporcionando una visión más profunda del rendimiento del jugador.
         """,
         "disclaimer": """
         **Aviso:** La fuente de los datos es MLB Gameday, la que podría no ser completamente precisa. Sin embargo, coincide bastante con los datos proporcionados por Trackman, lo que lo convierte en una herramienta confiable para el análisis.
