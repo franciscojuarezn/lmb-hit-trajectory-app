@@ -4,6 +4,10 @@ import requests
 
 WEBHOOK_URL = st.secrets["WEBHOOK_URL"]
 
+if WEBHOOK_URL:
+    st.write(f"Webhook URL: {WEBHOOK_URL}")  # For debugging purposes
+else:
+    st.error("Webhook URL is missing. Check your secrets configuration.")
 
 contact_info = {
     "en": {
@@ -17,7 +21,7 @@ contact_info = {
         "name_error": "Please provide your name",
         "email_error": "Please provide an email address",
         "valid_email": "Please provide a valid email address",
-        "message error": "Please provide a message",
+        "message_error": "Please provide a message",
         "succesful_msg": "Your message has been sent correctly",
         "error_msg": "There was an error sending your message",
         "email_placeholder": "You're sending an e-mail to data.frankly@gmail.com"
@@ -83,5 +87,6 @@ def contact_form(lang_code):
                 st.success(f"{contact_info[lang_code]['succesful_msg']}")
             else:
                 st.error(f"{contact_info[lang_code]['error_msg']}")
+                st.write(f"Error details: {response.text}")
 
             # st.success(contact_info[lang_code]["success_message"])
