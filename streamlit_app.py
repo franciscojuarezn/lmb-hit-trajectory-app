@@ -28,7 +28,7 @@ text = {
         "batted_ball_select": "Batted Ball Type",
         "choose_plot" : "Choose Plot",
         "outcome_plot" : "Outcome Only",
-        "outcome_trajectory" : "Outcome and Trajectory",
+        "outcome_trajectory" : "Outcome and Batted Ball Type",
         "outcome_text" : "Outcome distribution plot for",
         "trajectory_text" : "Batted Ball Type distribution",
         "socials": "Check out my socials",
