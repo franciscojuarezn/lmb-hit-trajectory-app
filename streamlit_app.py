@@ -135,23 +135,24 @@ if plot_choice == f"{text[lang_code]['outcome_trajectory']}":
 out_events = ['field_out', 'double_play', 'force_out', 'sac_bunt', 'grounded_into_double_play', 'sac_fly', 'fielders_choice_out', 'field_error', 'sac_fly_double_play']
 df['event'] = df['event'].apply(lambda x: 'out' if x in out_events else x)
 
-# filter 
-filtered_df_outcome  = df[
-    (df['batter_name'] == selected_batter) &
-    (df['event'].isin(selected_events)) &
-    (pd.to_datetime(df['date']).between(selected_dates[0], selected_dates[1])) &
-    (df['split_batter'].isin(selected_splits))
-]
-
-filtered_df_trajectory = pd.DataFrame()
+# # filter 
 if plot_choice == f"{text[lang_code]['outcome_trajectory']}":
-    filtered_df_trajectory = df[
+    filtered_df = df[
         (df['batter_name'] == selected_batter) &
         (df['event'].isin(selected_events)) &
-        (df['batted_ball_type'].isin(['line_drive', 'fly_ball', 'ground_ball', 'popup'])) &
+        (df['batted_ball_type'].isin(selected_trajectory)) &
         (pd.to_datetime(df['date']).between(selected_dates[0], selected_dates[1])) &
         (df['split_batter'].isin(selected_splits))
     ]
+else:
+    # Apply only the outcome filters
+    filtered_df = df[
+        (df['batter_name'] == selected_batter) &
+        (df['event'].isin(selected_events)) &
+        (pd.to_datetime(df['date']).between(selected_dates[0], selected_dates[1])) &
+        (df['split_batter'].isin(selected_splits))
+    ]
+
 team_data = pd.read_csv('stadium_2.csv')
 
 # subheader
@@ -198,30 +199,29 @@ def plot_field_and_hits(team_data, hit_data, selected_column, palette, plot_titl
     plt.grid(False)
     st.pyplot(plt)
     
-if plot_choice == "Outcome Only":
-    if not filtered_df_outcome.empty:
+if plot_choice == f"{text[lang_code]['outcome_plot']}":
+    if not filtered_df.empty:
         plot_title = f"{text[lang_code]['outcome_text']} {selected_batter}"
         st.subheader(plot_title)
-        plot_field_and_hits(team_data, filtered_df_outcome, 'event', {
+        plot_field_and_hits(team_data, filtered_df, 'event', {
             'single': 'darkorange', 'double': 'purple', 'triple': 'yellow', 'home_run': 'red', 'out': 'grey'
         }, plot_title)
     else:
         st.write("No data available for the selected filters.")
 else:
-    if not filtered_df_outcome.empty:
+    if not filtered_df.empty:
         plot_title = f"{text[lang_code]['outcome_text']} {selected_batter}"
         st.subheader(plot_title)
-        plot_field_and_hits(team_data, filtered_df_outcome, 'event', {
+        plot_field_and_hits(team_data, filtered_df, 'event', {
             'single': 'darkorange', 'double': 'purple', 'triple': 'yellow', 'home_run': 'red', 'out': 'grey'
         }, plot_title)
-    
-    if not filtered_df_trajectory.empty:
+        
         plot_title = f"{text[lang_code]['trajectory_text']} {selected_batter}"
         st.subheader(f"{text[lang_code]['trajectory_text']} {selected_batter}")
-        plot_field_and_hits(team_data, filtered_df_trajectory, 'batted_ball_type', {
+        plot_field_and_hits(team_data, filtered_df, 'batted_ball_type', {
             'line_drive': 'blue', 'fly_ball': 'cyan', 'ground_ball': 'brown', 'popup': 'magenta'
         }, plot_title)
-    elif filtered_df_outcome.empty:
+    elif filtered_df.empty:
         st.write("No data available for the selected filters.")
 @st.dialog(text[lang_code]['contact_title'])
 def show_contact_form():
